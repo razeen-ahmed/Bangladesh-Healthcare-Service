@@ -30,7 +30,40 @@
       <!-- partial -->
       @include('admin.navbar')
         <!-- partial -->
-        @include('admin.body')
+        <div class="container-fluid page-body-wrapper">
+            <div align="center" style="padding: 100px;">
+                <table>
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Doctor Name</th>
+                        <th>Date</th>
+                        <th>Message</th>
+                        <th>Status</th>
+                        <th>Approved</th>
+                        <th>Cancelled</th>
+                    </tr>
+                    @foreach($data as $appoint)
+                    <tr>
+                        <td>{{$appoint->name}}</td>
+                        <td>{{$appoint->email}}</td>
+                        <td>{{$appoint->phone}}</td>
+                        <td>{{$appoint->doctor}}</td>
+                        <td>{{$appoint->date}}</td>
+                        <td>{{$appoint->message}}</td>
+                        <td>{{$appoint->status}}</td>
+                        <td>
+                            <a class="btn btn-success" href="{{url('approved',$appoint->id)}}">Approved</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-success" href="{{url('canceled',$appoint->id)}}">Cancelled</a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </table>
+            </div>
+        </div>
     <!-- container-scroller -->
     <!-- plugins:js -->
     @include('admin.script')
