@@ -29,7 +29,19 @@ Route::middleware([
 
 Route::get('/add_doctor_view',[AdminController::class,'addview']);
 
+Route::get('/add_staff_view',[AdminController::class,'addstaffview']);
+
 Route::post('/upload_doctor',[AdminController::class,'upload']);
+
+Route::post('/upload_staff',[AdminController::class,'upload_staf']);
+
+Route::get('/deletestaff/{id}',[AdminController::class,'deletestaff']);
+
+Route::get('/showstaff',[AdminController::class,'showstaff']);
+
+Route::get('/updatestaff/{id}',[AdminController::class,'updatestaff']);
+
+Route::post('/editstaff/{id}',[AdminController::class,'editstaff']);
 
 Route::post('/appointment',[HomeController::class,'appointment']);
 
