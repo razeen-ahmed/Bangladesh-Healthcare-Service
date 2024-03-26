@@ -55,7 +55,7 @@
           </li>
           <li class="nav-item nav-category">
             <span class="nav-link">Navigation</span>
-          
+<!-- changes for doctor -->          
           <li class="nav-item menu-items">
             <a class="nav-link" href="{{url('add_doctor_view')}}">
               <span class="menu-icon">
@@ -64,6 +64,16 @@
               <span class="menu-title">Add Doctors</span>
             </a>
           </li>
+
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="{{url('showdoctor')}}">
+              <span class="menu-icon">
+                <i class="mdi mdi-file-document-box"></i>
+              </span>
+              <span class="menu-title">All Doctors</span>
+            </a>
+          </li>
+
 
 <!-- changes for staff -->
           <li class="nav-item menu-items">
@@ -92,5 +102,23 @@
               <span class="menu-title">Appointments</span>
             </a>
           </li>
+
+        <li class="nav-item menu-items">
+            <a class="nav-link" href="{{url('makeadmin')}}">
+              <span class="menu-icon">
+                <i class="mdi mdi-file-document-box"></i>
+              </span>
+              <span class="menu-title">Make Admin</span>
+            </a>
+          </li>
+          <li class="nav-item menu-items">
+            <a class="nav-link" href="{{url('doctoraccess')}}">
+              <span class="menu-icon">
+                <i class="mdi mdi-file-document-box"></i>
+              </span>
+              <span class="menu-title">Doctor Access</span>
+            </a>
+          </li>
+
         </ul>
       </nav>

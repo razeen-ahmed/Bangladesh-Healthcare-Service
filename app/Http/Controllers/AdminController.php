@@ -17,6 +17,7 @@ class AdminController extends Controller
         return view('admin.add_staff');
     }
 
+
     public function upload(Request $request)
 {
     $doctor = new Doctor;
@@ -145,4 +146,88 @@ public function canceled($id){
 
 }
 
+public function showdoctor(){
+    $data=doctor::all();
+    return view('admin.showdoctor',compact('data'));
 }
+public function deletedoctor($id){
+    $data=doctor::find($id);
+    $data->delete();
+    return redirect()->back();
+}
+
+public function updatedoctor($id){
+    $data=doctor::find($id);
+    return view('admin.update_doctor',compact('data'));
+}
+
+public function editdoctor(Request $request, $id){
+    $doctor=doctor::find($id);
+    $image = $request->file('file');
+
+    // Debugging: Check if the file is being uploaded correctly
+    // dd($image);
+
+    if ($image) {
+        $imageName = time() . '.' . $image->getClientOriginalExtension();  
+        $image->move('doctorimage', $imageName);
+        $doctor->image = $imageName;
+    }
+
+    $doctor->name = $request->name;
+    $doctor->dob = $request->dob;
+    $doctor->phone = $request->phone;
+    $doctor->room = $request->room;
+    $doctor->specialty = $request->specialty;
+    $doctor->save();
+
+    return redirect()->back();
+
+}
+public function emailview($id){
+    $data=appointment::find($id);
+    return view('admin.email_view',compact('data'));
+}
+public function sendemail(Request $request, $id){
+    $data=appointment::find($id);
+    $details=[
+        'greeting' => $request->greeting,
+        'body' => $request->body,
+        'actiontext' => $request->actiontext,
+        'actionurl' => $request->actionurl,
+        'endpart' => $request->endpart,
+    ];
+
+    Notification::send($data,new SendEmailNotification($details));
+
+    return redirect()->back();
+}
+
+public function makeadmin() {
+    $data = user::where('usertype', 0)->get();
+    return view('admin.makeadmin', compact('data'));
+}
+
+public function make_admin($id){
+    $data=user::find($id);
+    $data->usertype=1;
+    $data->save();
+    return redirect()->back();
+}
+
+public function doctoraccess() {
+    $data = user::where('usertype', 0)->get();
+    return view('admin.doctoraccess', compact('data'));
+}
+
+public function doctor_access($id){
+    $data=user::find($id);
+    $data->usertype=2;
+    $data->save();
+    return redirect()->back();
+}
+
+
+}
+
+
