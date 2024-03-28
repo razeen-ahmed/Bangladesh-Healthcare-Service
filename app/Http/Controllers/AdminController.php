@@ -7,6 +7,12 @@ use App\Models\Doctor;
 use App\Models\Staff;
 
 use App\Models\Appointment;
+
+use App\Models\User;
+
+use Notification;
+use App\Notifications\SendEmailNotification;
+
 class AdminController extends Controller
 {
     public function addview(){

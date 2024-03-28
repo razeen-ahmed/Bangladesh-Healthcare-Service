@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Doctor;
 use App\Models\Appointment;
+use App\Models\Post;
+
 class HomeController extends Controller
 {
     public function redirect(){
@@ -16,6 +18,9 @@ class HomeController extends Controller
             if($usertype=='0'){
                 $doctor = doctor::all();
                 return view('user.home',compact('doctor'));
+            }
+            if($usertype=='2'){
+                return view('doctor.home');
             }
 
             else{
@@ -120,6 +125,15 @@ class HomeController extends Controller
         // Return CSV file as response
         return response()->stream($callback, 200, $headers);
     }
+
+    public function comment()
+    {
+        {
+            $post=Post::all();
+            return view('comment',compact('post'));
+        }
+    }
+
 
 
 

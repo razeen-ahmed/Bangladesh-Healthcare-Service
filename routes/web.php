@@ -90,3 +90,5 @@ Route::get('/updatereport/{id}',[DoctorController::class,'updatereport']);
 Route::post('/editreport/{id}',[DoctorController::class,'editreport']);
 
 Route::get('/show_appointment',[DoctorController::class,'show_appointment']);
+
+Route::get('/comment',[HomeController::class,'comment']);

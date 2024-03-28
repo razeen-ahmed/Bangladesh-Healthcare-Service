@@ -89,6 +89,11 @@
             <li class="nav-item">
               <a class="nav-link" style="background-color:greenyellow; color: white;"href="{{url('myappointment')}}">My Appointment</a>
             </li>
+
+            <li class="nav-item">
+              <a class="nav-link" style="background-color:lightgreen; color: white;"href="{{url('comment')}}">Queries</a>
+            </li>
+            
             <x-app-layout>
             
             </x-app-layout>
@@ -100,6 +105,8 @@
             <li class="nav-item">
               <a class="btn btn-primary ml-lg-3" href="{{route('register')}}">Register</a>
             </li>
+
+        
             @endauth
 
             @endif
