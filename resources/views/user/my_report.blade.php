@@ -89,8 +89,13 @@
             <li class="nav-item">
               <a class="nav-link" style="background-color:greenyellow; color: white;"href="{{url('myappointment')}}">My Appointment</a>
             </li>
+
             <li class="nav-item">
-              <a class="nav-link" style="background-color:blue; color: white;"href="{{url('myreport')}}">My Report</a>
+              <a class="nav-link" style="background-color:lightgreen; color: white;"href="{{url('comment')}}">Queries</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" style="background-color:skyblue; color: white;"href="{{url('myreport')}}">My Report</a>
             </li>
             <x-app-layout>
             
@@ -137,7 +142,7 @@
             <td>{{$reports->phone}}</td>
             <td><img height="100" width="100" src="signature/{{$reports->image}}"></td>
             <td>{{$reports->treated_by}}</td>
-            <td><a class="bt btn-danger" onclick="return confirm('Are you certain')" href="{{url('download',$reports->id)}}">Download</a></td>
+            <td><a class="btn btn-primary ml-lg-3" onclick="return confirm('Are you certain')" href="{{url('download',$reports->id)}}">Download</a></td>
         </tr>
         @endforeach
     </table>

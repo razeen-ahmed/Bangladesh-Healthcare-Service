@@ -52,18 +52,31 @@
       <div class="container">
         <a class="navbar-brand" href="#"><span class="text-primary">One</span>-Health</a>
 
-        <form action="#">
+        <!-- <form action="">
           <div class="input-group input-navbar">
             <div class="input-group-prepend">
               <span class="input-group-text" id="icon-addon1"><span class="mai-search"></span></span>
             </div>
             <input type="text" class="form-control" placeholder="Enter keyword.." aria-label="Username" aria-describedby="icon-addon1">
           </div>
-        </form>
+        </form> -->
+
+        <!-- Search Doctor Button -->
+        @if(Route::has('login'))
+
+        @auth
+        
+        <a class="nav-link" style="background-color:greenyellow; color: white;"href="{{url('searchdoctor')}}">Search</a>
+
+        @endauth
+
+        @endif
+        <!-- End Search Doctor Button -->
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport" aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
+        
 
         <div class="collapse navbar-collapse" id="navbarSupport">
           <ul class="navbar-nav ml-auto">
@@ -90,14 +103,17 @@
               <a class="nav-link" style="background-color:greenyellow; color: white;"href="{{url('myappointment')}}">My Appointment</a>
             </li>
 
+      
+
             <li class="nav-item">
-              <a class="nav-link" style="background-color:lightgreen; color: white;"href="{{url('comment')}}">Queries</a>
+              <a class="nav-link" style="background-color:skyblue; color: white;"href="{{url('myreport')}}">My Report</a>
             </li>
             
             <x-app-layout>
             
             </x-app-layout>
             @else
+            
             <li class="nav-item">
               <a class="btn btn-primary ml-lg-3" href="{{route('login')}}">Login</a>
             </li>
@@ -126,7 +142,11 @@
       <div class="container text-center wow zoomIn">
         <span class="subhead">Let's make your life happier</span>
         <h1 class="display-4">Healthy Living</h1>
-        <a href="#" class="btn btn-primary">Let's Consult</a>
+        @if(Route::has('login'))
+        @auth
+        <a href="{{url('searchdoctor')}}" class="btn btn-primary">Ask any question</a>
+        @endauth
+        @endif
       </div>
     </div>
   </div>

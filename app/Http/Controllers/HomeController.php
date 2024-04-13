@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Doctor;
 use App\Models\Appointment;
 use App\Models\Post;
+use App\Models\Report;
 
 class HomeController extends Controller
 {
@@ -96,7 +97,7 @@ class HomeController extends Controller
     public function download($id)
     {
         // Fetch report data from the database based on the ID
-        $report = Report::find($id);
+        $report = Report::select('name', 'age', 'dob', 'prescription', 'created_at')->find($id);
 
         // Check if report exists
         if (!$report) {
@@ -133,6 +134,21 @@ class HomeController extends Controller
             return view('comment',compact('post'));
         }
     }
+
+    public function searchdoctor(Request $request)
+    {
+        {   $search = $request['search'] ?? "";
+            if($search!=""){
+                $data = doctor::where('name','LIKE',"%$search%")->get();
+            }
+            else{
+                $data = doctor::all();
+            }
+            return view('user.searchdoctor',compact('data'));
+        }
+    }
+
+
 
 
 

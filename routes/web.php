@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\DoctorController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -92,3 +93,5 @@ Route::post('/editreport/{id}',[DoctorController::class,'editreport']);
 Route::get('/show_appointment',[DoctorController::class,'show_appointment']);
 
 Route::get('/comment',[HomeController::class,'comment']);
+
+Route::get('/searchdoctor',[HomeController::class,'searchdoctor']);

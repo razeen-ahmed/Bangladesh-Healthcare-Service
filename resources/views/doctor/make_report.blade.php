@@ -72,7 +72,7 @@
 
             <div style="padding:15px;">
                 <label>Prescription</label>
-                <input type="text" style="color:black;" name="prescription" placeholder="Write the symptoms" required="">
+                <input type="text" style="color:black;" name="prescription" placeholder="Write the prescription" required="">
             </div>
 
             <div style="padding:15px;">
