@@ -13,6 +13,8 @@ use App\Models\User;
 use Notification;
 use App\Notifications\SendEmailNotification;
 
+use App\Models\tests;
+
 class AdminController extends Controller
 {
     public function addview(){
@@ -232,6 +234,96 @@ public function doctor_access($id){
     $data->save();
     return redirect()->back();
 }
+
+//Arian Nuhainnaa changes
+
+    public function destroy($id)
+    {
+        $test = tests::findOrFail($id);
+        $test->delete();
+
+        return redirect()->back()->with('message', 'Test deleted successfully.');
+    }
+    public function test()
+    {
+        $tests = tests::all();
+        return view('admin.test', compact('tests'));
+    }
+
+    public function addtest()
+    {
+        return view('admin.add_test');
+    }
+    public function add_test_in_database(Request $request)
+    {
+        $test = new tests;
+        $test->test_name = $request->test_name;
+        $test->test_description = $request->test_description;
+        $test->department = $request->department;
+        $test->price = $request->price;
+        $test->date = $request->date;
+        $test->save();
+        return redirect()->back();
+    }
+
+
+    // Assuming your test model is named Test and located in the appropriate directory
+
+    public function change_test_controller(Request $request){
+        // Retrieve the ID from the request
+        $id = $request->test_id;
+    
+        // Check if ID is valid
+        if ($id <= 0) {
+            return 'Invalid test ID';
+        }
+    
+        // Find the test record
+        $test = tests::find($id);
+    
+        // Check if the test record exists
+        if (!$test) {
+            return 'Test not found';
+        }
+    
+        // Update the test name if provided
+        if ($request->test_name != '') {
+            $test->test_name = $request->test_name;
+        }
+
+        if ($request->test_description != '') {
+            $test->test_description = $request->test_description;
+        }
+
+        if ($request->department != '') {
+            $test->department = $request->department;
+        }
+
+        if ($request->price != '') {
+            $test->price = $request->price;
+        }
+
+        if ($request->date != '') {
+            $test->date = $request->date;
+        }
+    
+        // Save changes
+        $test->save();
+    
+        // Redirect back with success message
+        return redirect()->back()->with('success', 'Test updated successfully');
+    }
+    
+
+
+
+
+
+    public function changetest()
+    {
+        $tests = tests::all();
+        return view('admin.change_test', compact('tests'));
+    }
 
 
 }

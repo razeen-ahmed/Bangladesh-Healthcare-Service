@@ -9,6 +9,7 @@ use App\Models\Doctor;
 use App\Models\Appointment;
 use App\Models\Post;
 use App\Models\Report;
+use App\Models\tests;
 
 class HomeController extends Controller
 {
@@ -148,8 +149,41 @@ class HomeController extends Controller
         }
     }
 
+    //Nuhan changes-->
 
+    public function show_test_view_controller(){
+        $tests = tests::all();
+        $cart = session()->get("new_cart");
+        if ($cart !== null) {
+            $testCarts = tests::whereIn('id', array_keys($cart))->get()->map(function($test) use ($cart) {
+                $test->quantity = $cart[$test->id];
+                $test->total = $test->quantity * $test->price;
+                return $test;
+            });
+        } else {
+            $testCarts = collect(); // or any default value or behavior you want
+        }
 
+        $totalAmount = $testCarts->sum('total');
+
+        return view('user.show_test',compact('tests', 'testCarts', 'totalAmount'));
+    }
+
+    // public function show_doctor_list_controller(){
+    //     $doctors = Doctor::all();
+    //     return view('user.show_doctor_list',compact('doctors'));
+    // }
+
+    public function cart(Request $request)
+    {
+        // Retrieve cart items from the session
+        $cart = $request->session()->get('cart', []);
+
+        // You can perform any additional processing here, such as calculating the total price
+
+        // Return a view to display the cart with the cart items
+        return view('cart', ['cart' => $cart]);
+    }
 
 
 

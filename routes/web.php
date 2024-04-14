@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\CartController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -95,3 +96,46 @@ Route::get('/show_appointment',[DoctorController::class,'show_appointment']);
 Route::get('/comment',[HomeController::class,'comment']);
 
 Route::get('/searchdoctor',[HomeController::class,'searchdoctor']);
+
+// Arian nuhan
+Route::get('/add_test_view',[AdminController::class,'addtest']);
+
+Route::get('/change_test_view',[AdminController::class,'changetest']);
+
+Route::get('/add_test_form',[AdminController::class,'add_test_in_database']);
+
+Route::get('/show_test_view',[HomeController::class,'show_test_view_controller']);
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile');
+});
+
+//Route::delete('/tests/{id}', 'AdminController@destroy')->name('tests.destroy');
+Route::delete('/tests/{id}', [AdminController::class, 'destroy'])->name('tests.destroy');
+
+Route::post('/change_test_form', [AdminController::class, 'change_test_controller']);
+
+
+Route::get('/test',[AdminController::class,'test']);
+
+Route::post('/cart_add/{id}', [CartController::class, 'addToCart']);
+
+Route::get('/show_doctor_list',[HomeController::class,'show_doctor_list_controller']);
+
+//});
+
+Route::post('/cart_remove/{id}', [CartController::class, 'removeToCart']);
+
+Route::get('/upload_patient_report/', function () { 
+    return view('user.upload_patient_report');
+});
+
+Route::post('/upload_patient_report', [CartController::class, 'uploadPatientReport'])->name("upload_patient_report");
+
+
+Route::get('/see_patient_report/', [CartController::class, 'seePatientReport'])->name("see_patient_report");
+
+Route::post('/checkout/', [CartController::class, 'checkout'])->name('checkout');
+
+Route::get('/news/', function () { return view('user.news');
+});
