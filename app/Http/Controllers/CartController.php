@@ -12,6 +12,8 @@ use App\Mail\SampleMail;
 use App\Models\SelfReport;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class CartController extends Controller
 {
@@ -98,7 +100,7 @@ class CartController extends Controller
   public function uploadPatientReport(Request $request) {
     
     $request->validate([
-      'report_file' => 'required|max:2048',
+        'report_file' => 'required|max:2048',
     ]);
     
     $file = $request->file('report_file');
@@ -107,13 +109,21 @@ class CartController extends Controller
     $fileName = $randomFileName . '.' . $fileExtension;
     
     $filePath = $file->move('report', $fileName);
-    $selfReport = SelfReport::create([
-      "fileName" => $fileName,
-      'user_id' => auth()->user()->id
-    ]);
+    
+    $selfReport = new SelfReport;
+    $selfReport->fileName = $fileName;
+    
+    // Set the user_id and patient_name fields
+    if (Auth::check()) {
+        $selfReport->user_id = Auth::user()->id;
+        $selfReport->patient_name = Auth::user()->name;
+    }
+    
+    $selfReport->save();
 
-    return "File uploaded successfully!";
-  }
+    return redirect()->back();
+}
+
 
   public function seePatientReport() {
 

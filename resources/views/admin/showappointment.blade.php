@@ -4,6 +4,54 @@
   <head>
     <!-- Required meta tags -->
     @include('admin.css')
+    <style>
+        /* Custom CSS for table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+            background-color: #0f1a33; /* Set table background color to dark blue */
+            color: #fff; /* Set text color to white */
+            overflow-x: auto; /* Enable horizontal scrollbar */
+            white-space: nowrap; /* Prevent text wrapping */
+        }
+
+        th {
+            background-color: yellow; /* Set table header background color to yellow */
+            color: #1f3057; /* Set table header text color to dark blue */
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #fff; /* Set border color for rows */
+        }
+
+        /* Button styling */
+        .btn {
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            color: #fff;
+        }
+
+        .btn-danger {
+            background-color: #dc3545; /* Red background color for delete button */
+        }
+
+        .btn-danger:hover {
+            background-color: #c82333; /* Darker red on hover */
+        }
+
+        .btn-primary {
+            background-color: #007bff; /* Blue background color for update button */
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3; /* Darker blue on hover */
+        }
+    </style>
   </head>
   <body>
     <div class="container-scroller">
@@ -31,7 +79,7 @@
       @include('admin.navbar')
         <!-- partial -->
         <div class="container-fluid page-body-wrapper">
-            <div align="center" style="padding: 100px;">
+            <div align="center" style="padding: 100px; overflow-x: auto;">
                 <table>
                     <tr>
                         <th>Patient Name</th>
@@ -43,6 +91,7 @@
                         <th>Status</th>
                         <th>Approved</th>
                         <th>Cancelled</th>
+                        <th>Send Mail</th>
                     </tr>
                     @foreach($data as $appoint)
                     <tr>
@@ -58,6 +107,9 @@
                         </td>
                         <td>
                             <a class="btn btn-success" href="{{url('canceled',$appoint->id)}}">Cancelled</a>
+                        </td>
+                        <td>
+                            <a class="btn btn-primary" href="{{url('emailview',$appoint->id)}}">Send Mail</a>
                         </td>
                     </tr>
                     @endforeach

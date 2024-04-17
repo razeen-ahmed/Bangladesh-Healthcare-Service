@@ -36,12 +36,13 @@ class AdminController extends Controller
     // dd($image);
 
     if ($image) {
-        $imageName = time() . '.' . $image->getClientOriginalExtension();  
+        $imageName = time() . '.' . $image->getClientOriginalExtension();
         $image->move('doctorimage', $imageName);
         $doctor->image = $imageName;
     }
 
     $doctor->name = $request->name;
+    $doctor->dob = $request->dob;
     $doctor->phone = $request->number;
     $doctor->room = $request->room;
     $doctor->specialty = $request->speciality;

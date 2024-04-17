@@ -88,15 +88,28 @@ class DoctorController extends Controller
     
     }
 
-    public function show_appointment(){
-        if(Auth::id())
-        {
-            $name=Auth::user()->name;
-            $data=appointment::where('doctor',$name)->get();
-            return view('doctor.show_appointment',compact('data'));
-        }
-        else{
-            return redirect()->back();
-        }
+ public function show_appointment()
+    {
+    if(Auth::check()) // Check if the user is authenticated
+    {
+        $name = Auth::user()->name;
+
+        // Retrieve appointments where doctor is current user's name and status is not 'cancelled'
+        $data = appointment::where('doctor', $name)
+                           ->where('status', '!=', 'cancelled')
+                           ->get();
+
+        return view('doctor.show_appointment', compact('data'));
     }
+    else {
+        return redirect()->back();
+    }
+    }
+
+     public function report_delete($id){
+        $data=report::find($id);
+        $data->delete();
+        return redirect()->back();
+    }
+
 }

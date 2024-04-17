@@ -1,83 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-<style type="text/css">
-    label {
-        display: inline-block;
-        width: 200px;
-        color: rgb(13, 226, 41); /* Change text color to white */
-    }
+    <!-- Required meta tags -->
+    <style type="text/css">
+        label {
+            display: inline-block;
+            width: 200px;
+        }
+      
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa; /* Set body background color */
+            color: #343a40; /* Set text color */
+            padding-top: 50px;
+        }
 
-    .form-control {
-        color: rgb(26, 236, 26); /* Change input text color to green */
-    }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: inherit; /* Inherit background color from body */
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Add box shadow */
+            border-radius: 8px; /* Add border radius */
+        }
 
-    .add-to-cart-btn {
-        background-color: rgb(24, 243, 39); /* Change button background color to green */
-        color: white; /* Change button text color to white */
-        border: none; /* Remove button border */
-        padding: 5px 10px; /* Add padding to the button */
-        cursor: pointer; /* Change cursor to pointer on hover */
-    }
-</style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #343a40; /* Set table background color */
+            color: #ffffff; /* Set table text color */
+        }
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6; /* Set border color for table rows */
+        }
 
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        th {
+            background-color: #ffc107; /* Set table header background color */
+            color: #343a40; /* Set table header text color */
+            font-weight: bold;
+        }
 
-    <meta name="copyright" content="MACode ID, https://macodeid.com/">
+        a {
+            color: #007bff; /* Set link text color */
+            text-decoration: none;
+        }
 
-    <title>One Health - Medical Center HTML5 Template</title>
+        a:hover {
+            text-decoration: underline; /* Add underline on hover */
+        }
 
-    <link rel="stylesheet" href="../assets/css/maicons.css">
-
-    <link rel="stylesheet" href="../assets/css/bootstrap.css">
-
-    <link rel="stylesheet" href="../assets/vendor/owl-carousel/css/owl.carousel.css">
-
-    <link rel="stylesheet" href="../assets/vendor/animate/animate.css">
-
-    <link rel="stylesheet" href="../assets/css/theme.css">
+        .alert {
+            margin-top: 20px;
+        }
+    </style>
+    @include('doctor.css')
 </head>
-
 <body>
-
-    <!-- Back to top button -->
-    <div class="back-to-top"></div>
-
-    <header>
-        <div class="topbar">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm-8 text-sm">
-                        <div class="site-info">
-                            <a href="#"><span class="mai-call text-primary"></span> +00 123 4455 6666</a>
-                            <span class="divider">|</span>
-                            <a href="#"><span class="mai-mail text-primary"></span> mail@example.com</a>
+    <div class="container-scroller">
+        <div class="row p-0 m-0 proBanner" id="proBanner">
+            <div class="col-md-12 p-0 m-0">
+                <div class="card-body card-body-padding d-flex align-items-center justify-content-between">
+                    <div class="ps-lg-1">
+                        <div class="d-flex align-items-center justify-content-between">
+                            <p class="mb-0 font-weight-medium me-3 buy-now-text">Free 24/7 customer support, updates, and more with this template!</p>
+                            <a href="https://www.bootstrapdash.com/product/corona-free/?utm_source=organic&utm_medium=banner&utm_campaign=buynow_demo" target="_blank" class="btn me-2 buy-now-btn border-0">Get Pro</a>
                         </div>
                     </div>
-                    <div class="col-sm-4 text-right text-sm">
-                        <div class="social-mini-button">
-                            <a href="#"><span class="mai-logo-facebook-f"></span></a>
-                            <a href="#"><span class="mai-logo-twitter"></span></a>
-                            <a href="#"><span class="mai-logo-dribbble"></span></a>
-                            <a href="#"><span class="mai-logo-instagram"></span></a>
-                        </div>
+                    <div class="d-flex align-items-center justify-content-between">
+                        <a href="https://www.bootstrapdash.com/product/corona-free/"><i class="mdi mdi-home me-3 text-white"></i></a>
+                        <button id="bannerClose" class="btn border-0 p-0">
+                            <i class="mdi mdi-close text-white me-0"></i>
+                        </button>
                     </div>
-                </div> <!-- .row -->
-            </div> <!-- .container -->
-        </div> <!-- .topbar -->
-        @include('user.navbar')
-    </header>
-    @if (session()->has('message'))
-        <div class="alert alert-success">
-            <button type="button" class="close" data-dismiss="alert">x</button>
-            {{ session()->get('message') }}
+                </div>
+            </div>
         </div>
-    @endif
-
-    @foreach($reports as  $report)
-    <a href="{{$report->url}}">Download</a><br/>
-    @endforeach
+        <!-- partial:partials/_sidebar.html -->
+        @include('doctor.sidebar')
+        <!-- partial -->
+        @include('doctor.navbar')
+        <!-- partial -->
+        <div class="container" align="center" style="padding-top: 100px;">
+            @if (session()->has('message'))
+                <div class="alert alert-success">
+                    <button type="button" class="close" data-dismiss="alert">x</button>
+                    {{ session()->get('message') }}
+                </div>
+            @endif
+            <table>
+                <thead>
+                    <tr>
+                        <th>Patient Name</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($reports as $report)
+                        <tr>
+                            <td>{{ $report->patient_name }}</td>
+                            <td>
+                                <a class="btn btn-primary" href="{{ $report->url }}">Download</a>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- container-scroller -->
+    <!-- plugins:js -->
+    @include('doctor.script')
+</body>
+</html>

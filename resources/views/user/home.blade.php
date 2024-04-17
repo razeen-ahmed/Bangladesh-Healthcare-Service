@@ -81,20 +81,21 @@
         <div class="collapse navbar-collapse" id="navbarSupport">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active">
-              <a class="nav-link" href="index.html">Home</a>
+              <a class="nav-link" href="{{ url('/') }}">Home</a>
             </li>
+      
             <li class="nav-item">
-              <a class="nav-link" href="about.html">About Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="doctors.html">Doctors</a>
-            </li>
-             <li class="nav-item">
               <a class="nav-link" href="{{url('/news') }}">News</a>
             </li>
+            @if(Route::has('login'))
+
+            @auth
             <li class="nav-item">
               <a class="nav-link" href=" {{ url('show_test_view')}} ">Tests</a>
             </li>
+            @endauth
+
+            @endif
 
             @if(Route::has('login'))
 
@@ -107,6 +108,10 @@
 
             <li class="nav-item">
               <a class="nav-link" style="background-color:skyblue; color: white;"href="{{url('myreport')}}">My Report</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" style="background-color:lightgreen; color: white;" href="{{ url('/upload_patient_report') }}">Upload Report</a>
             </li>
             
             <x-app-layout>
@@ -144,7 +149,7 @@
         <h1 class="display-4">Healthy Living</h1>
         @if(Route::has('login'))
         @auth
-        <a href="{{url('searchdoctor')}}" class="btn btn-primary">Ask any question</a>
+        <a href="{{url('comment')}}" class="btn btn-primary">Ask any question</a>
         @endauth
         @endif
       </div>
@@ -201,7 +206,7 @@
       </div>
     </div> <!-- .bg-light -->
   </div> <!-- .bg-light -->
-
+  
   @include('user.doctor')
 
 

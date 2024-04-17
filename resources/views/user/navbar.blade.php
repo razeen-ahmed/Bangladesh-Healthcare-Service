@@ -3,14 +3,17 @@
       <div class="container">
         <a class="navbar-brand" href="#"><span class="text-primary">One</span>-Health</a>
 
-        <form action="#">
-          <div class="input-group input-navbar">
-            <div class="input-group-prepend">
-              <span class="input-group-text" id="icon-addon1"><span class="mai-search"></span></span>
-            </div>
-            <input type="text" class="form-control" placeholder="Enter keyword.." aria-label="Username" aria-describedby="icon-addon1">
-          </div>
-        </form>
+         <!-- Search Doctor Button -->
+        @if(Route::has('login'))
+
+        @auth
+        
+        <a class="nav-link" style="background-color:greenyellow; color: white;"href="{{url('searchdoctor')}}">Search</a>
+
+        @endauth
+
+        @endif
+        <!-- End Search Doctor Button -->
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupport" aria-controls="navbarSupport" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -20,32 +23,29 @@
           <ul class="navbar-nav ml-auto">
           <li class="nav-item">
 
-              <a class="nav-link" href="{{url('/home')}}">Home</a>
+              <a class="nav-link" href="{{url('/')}}">Home</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href="{{url('/show_doctor_list') }}">Doctors</a>
-            </li>
+            
             <li class="nav-item">
               <a class="nav-link" href="{{url('/news') }}">News</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link" href=" {{ url('show_test_view')}} ">Tests</a>
-            </li>
+            
 
-            @if (Route::has('login'))
+    @if (Route::has('login'))
     @auth
-        <li class="nav-item">
-            <a class="nav-link" style="background-color:greenyellow; color: white;" href="{{ url('myappointment') }}">My Appointment</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('profile') }}">View Profile</a>
-        </li>
-        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/upload_patient_report') }}">Upload Your Report</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/see_patient_report') }}">See Your Reports</a>
-                        </li>
+      <li class="nav-item">
+          <a class="nav-link" style="background-color:greenyellow; color: white;" href="{{ url('myappointment') }}">My Appointment</a>
+      </li>
+      
+      <li class="nav-item">
+            <a class="nav-link" style="background-color:skyblue; color: white;"href="{{url('myreport')}}">My Report</a>
+      </li>
+
+      <li class="nav-item">
+          <a class="nav-link" style="background-color:lightgreen; color: white;" href="{{ url('/upload_patient_report') }}">Upload Report</a>
+      </li>
+
+     
         <!-- Logout Link -->
         <li class="nav-item">
             <form action="{{ route('logout') }}" method="POST" id="logout-form">

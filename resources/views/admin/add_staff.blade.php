@@ -84,7 +84,7 @@
             </div>
 
             <div style="padding:15px;">
-                <label>Doctor Image</label>
+                <label> Image</label>
                 <input type = "file" name="file" required="">
             </div>
 

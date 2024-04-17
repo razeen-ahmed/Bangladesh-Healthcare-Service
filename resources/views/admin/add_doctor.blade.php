@@ -56,6 +56,11 @@
             </div>
 
             <div style="padding:15px;">
+                <label>Date of Birth</label>
+                <input type="text" style="color:black;" name="dob" placeholder="Write the Date of Birth" required="">
+            </div>
+
+            <div style="padding:15px;">
                 <label>Phone number</label>
                 <input type="number" style="color:black;" name="number" placeholder="Write the number" required="">
             </div>

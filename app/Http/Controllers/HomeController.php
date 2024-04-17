@@ -17,6 +17,7 @@ class HomeController extends Controller
 
         if(Auth::id()){
             $usertype=Auth()->user()->usertype;
+            $username=Auth()->user()->name;
             if($usertype=='0'){
                 $doctor = doctor::all();
                 return view('user.home',compact('doctor'));
@@ -26,7 +27,7 @@ class HomeController extends Controller
             }
 
             else{
-                return view('admin.home');
+                return view('admin.home',['username' => $username]);
             }
         }
         else{
@@ -49,6 +50,7 @@ class HomeController extends Controller
         $data->name=$request->name;
         $data->email=$request->email;
         $data->date=$request->date;
+        $data->dob=$request->dob;
         $data->phone=$request->number;
         $data->message=$request->message;
         $data->doctor=$request->doctor;
@@ -185,6 +187,11 @@ class HomeController extends Controller
         return view('cart', ['cart' => $cart]);
     }
 
+    public function report_delete($id){
+        $data=report::find($id);
+        $data->delete();
+        return redirect()->back();
+    }
 
 
 }

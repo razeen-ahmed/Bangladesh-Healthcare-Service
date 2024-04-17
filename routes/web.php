@@ -137,5 +137,9 @@ Route::get('/see_patient_report/', [CartController::class, 'seePatientReport'])-
 
 Route::post('/checkout/', [CartController::class, 'checkout'])->name('checkout');
 
-Route::get('/news/', function () { return view('user.news');
-});
+Route::get('/news/', function () { return view('user.news');});
+
+
+Route::get('/report_delete/{id}',[HomeController::class,'report_delete']);
+
+Route::get('/report_delete/{id}',[DoctorController::class,'report_delete']);
