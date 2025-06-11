@@ -7,60 +7,33 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+# Project Summary
+We have created a unique website where we have created a harmonious relationship between the three categories of Users: Administrator, Doctors and Patients.
+The website provides a medium for the patients to smartly interact with the Doctors which also have the symbiotics of Doctors interacting with the Patients as well. Our website provides the uniqueness that the patient can upload their respective medical reports, which can be accessed by the doctors on a need basis. Additionally, the website provides the opportunity to patients to be able to make appointments with the respective doctors. Patients will be able to know their appointment status via the website as well as get emailed about their appointment information by the Administrator. Afterwards, when the appointment has been successfully concluded, Doctors can upload the digital reports of the patient which can be viewed by the respective user who partook in the appointment. Through this, the patient will have their medical history archived in the website which can be accessed anytime by the Patients. This way, even if the hardcopy is lost, the data will remain intact in the database. They can download the report if they want. Users can know about the tests available and they can opt to take the tests and purchase them from the website. Upon successful transaction and checkout, they will receive a receipt in the form of email, ensuring that they have a digital receipt of the said transaction. Finally, since we care about the Patients who are our number one priority, we take feedback from our Patients and strive to always improve ourselves.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
-
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Featues
+1. User/Admin/Doctor login
+2. Patient register
+3. Forgot password
+4. Email verification from registration
+5. Patient have the option to schedule an appointment with the doctor.
+6. Admin can register,remove,update staffs in the system
+7. Admin can confirm or cancel the appointments.
+8. Admin can send mail to the patient based on their appointment.
+9. Users can only see their appointment information and status. Also, cancel the appointment.
+10. Doctors can be registered, removed and updated in the system.
+11. Patients can submit query, edit query, delete query, and provide like to the doctors response.
+12. Doctors can respond, edit respond, delete respond, and provide like to the patient queries.
+13. Tests can be added, removed and updated by the admin.
+14. Based on the Appointment digital report can be added, updated, by the doctor.
+15. Doctors can view only their appointments and reports. Doctor can cancel the appointment.
+16. Users can view their digital report provided by the doctor and can download the report.
+17. Users can search the doctors by using any part of their name.
+18. Users can view and add any number of tests, any number of times, remove from cart
+19. Users can checkout. Upon checkout, users will receive the payment receipt via email.
+20. Users can upload digital reports in the form of pdf.
+21. Users can view News which is taken by Web Scraping.
+22. Doctors can download the pdf of the reports which has been uploaded by the respective users.
+23. Patients can rate and provide feedback about the doctors.
+24. Admin can view the rating and feedback provided by the patients about a specific doctor.
